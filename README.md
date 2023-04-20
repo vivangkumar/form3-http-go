@@ -277,11 +277,26 @@ type errResponse interface {
 }
 ```
 
+## Docker
+
+A docker image that is used in `docker-compose up` is hosted on docker hub at
+[vivangkumar/form3-http-go](https://hub.docker.com/r/vivangkumar/form3-http-go/tags).
+
+Alternatively, if you'd like to build the image locally, then please
+build it using
+
+```
+docker build -t vivangkumar/form3-http-go:latest
+```
+
+Reference this image in `docker-compose.yaml`.
+
 ## Tests
 
 The code is covered by both unit and integration tests.
 
 These tests also run as part of `docker-compose up`.
+
 
 To run all the tests, use
 
@@ -300,6 +315,8 @@ Finally, to run integration tests,
 ```
 ACCOUNTS_API_BASE_URL=http://localhost:8080 make integration-test
 ```
+
+If the above env var is not set, the tests will be skipped.
 
 This will run against a fake account API running at `ACCOUNTS_API_BASE_URL`
 

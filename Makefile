@@ -8,7 +8,7 @@ build:
 unit-test:
 	$(ginkgo) --timeout 3m --skip-package integration
 
-test: unit-test
+test: unit-test integration-test
 
 integration-test:
 	$(ginkgo) ./internal/integration
