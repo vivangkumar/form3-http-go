@@ -5,8 +5,13 @@ ginkgo := go run github.com/onsi/ginkgo/v2/ginkgo -r --race --cover --trace --ti
 build:
 	go build ./...
 
-test:
-	$(ginkgo)
+unit-test:
+	$(ginkgo) --timeout 3m --skip-package integration
+
+test: unit-test
+
+integration-test:
+	$(ginkgo) ./internal/integration
 
 clean:
 	find . -type f -wholename "*fakes*/fake_*go" -wholename "*internal*/fake_*go" -exec rm -v {} \;
